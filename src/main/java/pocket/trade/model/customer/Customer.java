@@ -10,7 +10,6 @@ import lombok.*;
 @Entity
 @Table
 public class Customer {
-
     @Id
     @GeneratedValue
     @Column(nullable = false)
@@ -34,27 +33,33 @@ public class Customer {
     @Column(nullable = false)
     private String password;
 
+    /**
+     *  Birth country address
+     */
     @Column(nullable = false)
     private String birthCountryName;
 
     @Column(nullable = false)
-    private String address;
+    private String birthCountCityAddress;
 
     @Column(nullable = false)
-    private String street;
+    private String birthCountryStreet;
 
     @Column(nullable = false)
-    private String postalCode;
+    private String birthCountryPostalCode;
 
+    /**
+     *  Residence country address
+     */
     @Column
     private String residenceCountryName;
-    @Column(nullable = false)
-    private String residenceAddress;
+
+    @Column
+    private String residenceCountryCityAddress;
 
     @Column
     private String residentStreet;
 
     @Column
     private String residentPostalCode;
-
 }
