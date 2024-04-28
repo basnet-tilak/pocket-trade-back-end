@@ -39,27 +39,4 @@ public class Employee {
     @Column(nullable = false)
     private Role role = Role.User;
 
-    @Column(nullable = false)
-    private String birthCountryName;
-
-    @Column(nullable = false)
-    private String birthCountryAddress;
-
-    @Column(nullable = false)
-    private String birthCountryStreet;
-
-    @Column(nullable = false)
-    private String birthCountryPostalCode;
-
-    @Column
-    private String residenceCountryName;
-
-    @Column
-    private String residenceCountryAddress;
-
-    @Column
-    private String residenceCountryStreet;
-
-    @Column
-    private String residenceCountryPostalCode;
 }

@@ -18,11 +18,26 @@ public class CustomerService implements CustomerInterface {
     }
 
     // Create the customer
-    public void addNewCustomer(Customer customer, String email){
-        if(getCustomerByEmail(email).isEmpty()){
-            customerRepository.save(customer);
-        }else{
-            System.out.println("This email is already present in database");
+    public void addNewCustomer(Customer customer){
+       boolean isCustomerEmailIsPresent = customerRepository
+                                                .findAll().stream()
+                                                .anyMatch(customer1 -> customer1.getEmail().equals(customer.getEmail()));
+       boolean isCustomerContactIsPresent = customerRepository
+                                                .findAll().stream()
+                                                .anyMatch(cus -> cus.getContact().equals(customer.getContact()));
+
+       if( isCustomerContactIsPresent || isCustomerEmailIsPresent){
+           System.out.println("Email or Contact is already present in database");
+       }else{
+           customerRepository.save(customer);
+       }
+    }
+
+    public void deleteCustomerByEmail(String email) {
+        for(Customer customer: getAllCustomer()){
+            if(customer.getEmail().equals(email)){
+                customerRepository.delete(customer);
+            }
         }
     }
 
@@ -33,5 +48,17 @@ public class CustomerService implements CustomerInterface {
                .stream()
                .findAny()
                .filter(customer -> customer.getEmail().equals(email));
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer c : customers) {
+            if (customer.getId().equals(c.getId())) {
+                customerRepository.save(customer);
+            } else {
+                System.out.println(customer.getFirstName() + " Customer not found in the database");
+            }
+        }
     }
 }

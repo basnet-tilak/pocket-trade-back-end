@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface CustomerInterface {
     Optional<Customer> getCustomerByEmail(String email);
+    void updateCustomer(Customer customer);
+
 }

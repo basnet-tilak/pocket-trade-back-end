@@ -31,29 +31,5 @@ public class Customer {
 
     @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false)
-    private String birthCountryName;
-
-    @Column(nullable = false)
-    private String birthCountryAddress;
-
-    @Column(nullable = false)
-    private String birthCountryStreet;
-
-    @Column(nullable = false)
-    private String birthCountryPostalCode;
-
-    @Column
-    private String residenceCountryName;
-
-    @Column
-    private String residenceCountryAddress;
-
-    @Column
-    private String residenceCountryStreet;
-
-    @Column
-    private String residenceCountryPostalCode;
-
+    
 }
