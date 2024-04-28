@@ -11,8 +11,7 @@ import lombok.*;
 @Table
 public class Customer {
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -33,14 +32,11 @@ public class Customer {
     @Column(nullable = false)
     private String password;
 
-    /**
-     *  Birth country address
-     */
     @Column(nullable = false)
     private String birthCountryName;
 
     @Column(nullable = false)
-    private String birthCountCityAddress;
+    private String birthCountryAddress;
 
     @Column(nullable = false)
     private String birthCountryStreet;
@@ -48,18 +44,16 @@ public class Customer {
     @Column(nullable = false)
     private String birthCountryPostalCode;
 
-    /**
-     *  Residence country address
-     */
     @Column
     private String residenceCountryName;
 
     @Column
-    private String residenceCountryCityAddress;
+    private String residenceCountryAddress;
 
     @Column
-    private String residentStreet;
+    private String residenceCountryStreet;
 
     @Column
-    private String residentPostalCode;
+    private String residenceCountryPostalCode;
+
 }

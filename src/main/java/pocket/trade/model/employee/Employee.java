@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,8 +14,7 @@ import java.util.List;
 @Table
 public class Employee {
     @Id
-    @GeneratedValue
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -38,36 +35,32 @@ public class Employee {
     @Column(nullable = false)
     private String password;
 
-    /**
-     *  Birth country address
-     */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.User;
+
     @Column(nullable = false)
     private String birthCountryName;
 
     @Column(nullable = false)
-    private String address;
+    private String birthCountryAddress;
 
     @Column(nullable = false)
-    private String street;
+    private String birthCountryStreet;
 
     @Column(nullable = false)
-    private String postalCode;
+    private String birthCountryPostalCode;
 
-    /**
-     *  Residence country address
-     */
     @Column
     private String residenceCountryName;
 
-    @Column(nullable = false)
-    private String residenceAddress;
+    @Column
+    private String residenceCountryAddress;
 
     @Column
-    private String residentStreet;
+    private String residenceCountryStreet;
 
     @Column
-    private String residentPostalCode;
+    private String residenceCountryPostalCode;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    protected List<Role> roleList;
 }
