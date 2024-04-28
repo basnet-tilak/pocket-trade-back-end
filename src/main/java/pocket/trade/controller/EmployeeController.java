@@ -1,10 +1,7 @@
 package pocket.trade.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pocket.trade.model.employee.Employee;
 import pocket.trade.services.EmployeeServices;
 import java.util.List;
@@ -24,7 +21,12 @@ public class EmployeeController {
 
          // This method check the email in database first if email is not
          //  present in database then only save the new employee
-
         employeeServices.addNewEmployee(employee, employee.getEmail());
+    }
+
+    // Delete the employee by email
+    @DeleteMapping("/employee/delete/{email}")
+    public void deleteEmployeeByEmail(@PathVariable("email") String email){
+        employeeServices.deleteEmployee(email);
     }
 }

@@ -6,5 +6,4 @@ import pocket.trade.model.employee.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-    public Employee getEmployeeByEmail(String email);
 }

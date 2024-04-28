@@ -27,6 +27,10 @@ public class EmployeeServices implements EmployeeInterface {
         }
     }
 
+    public void deleteEmployee(String email) {
+       Optional<Employee> employee =  getEmployeeByEmail(email);
+        employee.ifPresent(value -> employeeRepository.delete(value));
+    }
     @Override
     public Optional<Employee> getEmployeeByEmail(String email) {
         return employeeRepository.findAll()
